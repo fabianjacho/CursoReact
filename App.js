@@ -1,37 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View  } from 'react-native';
-import { getPersonajes } from './lib/rickyMorty';
-import { useEffect, useState } from 'react';
-import { ScrollView } from 'react-native-web';
 import Logo from './componentes/Logo';
-import { CharacterCard } from './componentes/CharacterCard';
+import { Main } from './componentes/main';
 
 export default function App() {
-  const [personajes, setPersonajes] = useState([]);
 
-   useEffect(() => {
-    getPersonajes().then(data => {
-      console.log("Personajes:", data);
-      setPersonajes(data);
-    });
-  }, []);
 
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-
-      <ScrollView style={{ width: '100%' }}>
-
-        <Logo style={styles.Logo}></Logo>
-
-      {personajes.map((personaje) => (
-        <CharacterCard 
-          key={personaje.id}
-          personaje={personaje}
-        />
-      ))}
-      </ScrollView>
-
+      <Logo style={styles.Logo}></Logo>
+      <Main />
     </View>
   );
 }
