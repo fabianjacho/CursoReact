@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View  } from 'react-native';
 import { getPersonajes } from './lib/rickyMorty';
 import { useEffect, useState } from 'react';
-import { Image } from 'react-native';
 import { ScrollView } from 'react-native-web';
 import Logo from './componentes/Logo';
+import { CharacterCard } from './componentes/CharacterCard';
 
 export default function App() {
   const [personajes, setPersonajes] = useState([]);
@@ -22,25 +22,13 @@ export default function App() {
 
       <ScrollView style={{ width: '100%' }}>
 
-        <Logo></Logo>
-        
-      {personajes.map((personaje) => (
-        <View key={personaje.id} style={{ margin: 10, padding: 10, borderWidth: 1, borderColor: '#ccc' }}>
-          <Image
-            source={{ uri: personaje.image }}
-            style={styles.image }
-          />
-          <Text style={styles.title}>{personaje.name}</Text>
-          <Text>Status: {personaje.status}</Text>
-          <Text>Species: {personaje.species}</Text>
-          <Text style={styles.gender}>Gender: {personaje.gender}</Text>
-          <Text>Episodes: {personaje.episode.length}</Text>
-          <Pressable onPress={() => console.log(`Selected: ${personaje.name}`)}>
-            <Text style={{ color: 'blue', marginTop: 5 }}>Select</Text>
-          </Pressable>
-          <Button styles={styles.button} title="More Info" onPress={() => console.log(`More info about ${personaje.name}`)} />
+        <Logo style={styles.Logo}></Logo>
 
-        </View>
+      {personajes.map((personaje) => (
+        <CharacterCard 
+          key={personaje.id}
+          personaje={personaje}
+        />
       ))}
       </ScrollView>
 
@@ -85,5 +73,11 @@ const styles = StyleSheet.create({
   gender: {
     fontSize: 16,
     color: '#rgb(255, 131, 100)',
+  },
+
+  Logo: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
   },
 });
