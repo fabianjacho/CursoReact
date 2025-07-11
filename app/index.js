@@ -12,7 +12,7 @@ export default function Index() {
       <StatusBar style="light" />
       <Logo style={styles.Logo} />
       <Link href="/about" asChild>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.aboutButton}>
           <Text style={styles.buttonText}>Acerca de</Text>  
       </TouchableOpacity>
       </Link>
@@ -62,5 +62,12 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     marginBottom: 20,
+  },
+
+  aboutButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: '#007BFF',
+    borderRadius: 5,
   },
 });
