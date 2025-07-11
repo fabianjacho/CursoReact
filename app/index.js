@@ -2,12 +2,21 @@ import { View, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Logo from '../componentes/Logo';
 import {Main} from '../componentes/main';
+import { TouchableOpacity, Text } from 'react-native';
+import { Link } from 'expo-router';
+
 
 export default function Index() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
       <Logo style={styles.Logo} />
+      <Link href="/about" asChild>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Acerca de</Text>  
+      </TouchableOpacity>
+      </Link>
+      
       <Main />
     </View>
   );
